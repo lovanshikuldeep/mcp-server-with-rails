@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "mcp_with_blog": {
+      "type": "stdio",
+      "command": "bundle",
+      "args": ["exec", "ruby", "${workspaceFolder}/bin/mcp_server"],
+      "env": {
+        "BUNDLE_GEMFILE": "${workspaceFolder}/Gemfile"
+      }
+    }
+  }
+}

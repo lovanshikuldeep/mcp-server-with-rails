@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "mcp_with_blog": {
+      "command": "bundle",
+      "args": ["exec", "bin/mcp_server"],
+      "cwd": "/home/developer/mcp_demo/mcp_with_blog"
+    }
+  }
+}

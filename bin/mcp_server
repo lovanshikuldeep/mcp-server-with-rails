@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# MCP server (stdio transport) exposing blog post CRUD tools.
+# stdout is reserved for the MCP protocol; Rails logs to log/*.log, not stdout.
+ENV["RAILS_ENV"] ||= "development"
+require_relative "../config/environment"
+
+MCP::Server::Transports::StdioTransport.new(BlogServer.build).open

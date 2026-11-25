@@ -1,0 +1,5 @@
+<article class="card" id="<%= dom_id post %>">
+  <h2><%= post.title %></h2>
+  <small><%= l post.created_at, format: :long %></small>
+  <div class="body"><%= simple_format(h(post.body)) %></div>
+</article>

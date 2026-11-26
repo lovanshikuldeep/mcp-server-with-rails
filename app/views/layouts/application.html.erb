@@ -24,6 +24,10 @@
   </head>
 
   <body>
+    <nav class="nav">
+      <%= link_to "Posts", posts_path %>
+      <%= link_to "Blog assistant", chat_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>

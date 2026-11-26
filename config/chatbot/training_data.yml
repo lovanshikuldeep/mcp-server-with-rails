@@ -1,0 +1,426 @@
+# Training data for the blog assistant's intent classifier.
+#
+# Add example sentences under an intent, then retrain:
+#   bin/rails chatbot:train      # train and save storage/chatbot/model.json
+#   bin/rails chatbot:evaluate   # leave-one-out accuracy and misclassified examples
+#
+# The app also retrains automatically when this file is newer than the saved model.
+# Titles, bodies, quoted text and search terms are stripped before training, so
+# examples can use realistic values.
+intents:
+  greeting:
+    examples:
+      - hi
+      - hello
+      - hey
+      - hey there
+      - hello there
+      - hi bot
+      - good morning
+      - good afternoon
+      - good evening
+      - howdy
+      - hiya
+      - greetings
+      - yo
+      - hi, how are you?
+      - how are you doing
+      - what's up
+      - hi there
+      - hey bot
+      - hello assistant
+      - morning
+      - good day
+      - hey, how's it going
+
+  goodbye:
+    examples:
+      - bye
+      - goodbye
+      - bye bye
+      - see you
+      - see you later
+      - see ya
+      - talk to you later
+      - that's all for now
+      - i'm done
+      - good night
+      - catch you later
+      - have a nice day
+      - cya
+      - bye for now
+      - see you soon
+      - later
+      - i'm leaving
+      - exit
+      - that's all
+
+  thanks:
+    examples:
+      - thanks
+      - thank you
+      - thanks a lot
+      - thank you so much
+      - many thanks
+      - thx
+      - ty
+      - cheers
+      - great, thanks
+      - awesome thank you
+      - perfect, thanks
+      - nice work
+      - that's helpful
+      - appreciate it
+      - thanks so much
+      - thank you very much
+      - great job
+      - well done
+      - much appreciated
+      - thanks for the help
+
+  help:
+    examples:
+      - help
+      - help me
+      - what can you do
+      - what can you do for me
+      - how do you work
+      - what are your features
+      - show me what you can do
+      - how do i use this
+      - what commands do you understand
+      - what can i ask you
+      - i need help
+      - give me some examples
+      - how does this work
+      - what are you
+      - who are you
+      - options
+      - commands
+      - menu
+      - examples
+      - give me examples
+      - how does it work
+      - what should i type
+      - instructions
+      - how can you help
+      - what do you do
+
+  out_of_scope:
+    examples:
+      - what's the weather today
+      - will it rain tomorrow
+      - tell me a joke
+      - tell me something funny
+      - who is the president
+      - what time is it
+      - what's the date today
+      - play some music
+      - book a flight to london
+      - order a pizza
+      - what is the capital of france
+      - translate hello to spanish
+      - how old are you
+      - what's your favorite color
+      - calculate 2 plus 2
+      - set an alarm for 7am
+      - send an email to my boss
+      - what is the meaning of life
+      - recommend a movie
+      - how do i cook pasta
+      - what's the weather like
+      - tell me a story
+      - sing a song
+      - what's in the news
+      - who won the game
+      - how tall is mount everest
+      - what is the bitcoin price
+      - solve this math problem
+      - what's 5 times 3
+      - who made you
+
+  list_posts:
+    examples:
+      - list posts
+      - list all posts
+      - list the posts
+      - show posts
+      - show all posts
+      - show me the posts
+      - show me all posts
+      - show me all the posts
+      - show me my posts
+      - show the latest posts
+      - show me the latest 5 posts
+      - show 3 posts
+      - display all posts
+      - display the posts
+      - what posts are there
+      - what posts do i have
+      - which posts exist
+      - get all posts
+      - get the posts
+      - give me all posts
+      - give me the latest 10 posts
+      - list articles
+      - list my blog posts
+      - show recent posts
+      - show the newest posts
+      - what's on the blog
+      - what have i written
+      - all posts
+      - posts
+      - my posts
+      - recent articles
+      - list the last 5 articles
+      - what posts are available
+      - which posts do i have
+      - list everything
+      - show everything
+      - what is on the blog
+      - show me all the articles
+      - list all of them
+      - can you list all posts
+      - could you show me the posts
+      - can you show my posts
+
+  count_posts:
+    examples:
+      - how many posts are there
+      - how many posts do i have
+      - how many articles are there
+      - how many blog posts exist
+      - count posts
+      - count the posts
+      - count all posts
+      - count my articles
+      - number of posts
+      - total number of posts
+      - total posts
+      - what is the post count
+      - how many posts have i written
+      - tell me how many posts there are
+      - post count
+      - how many
+      - count of posts
+      - posts count
+      - how many posts in total
+      - count all the articles
+      - how many posts exist
+
+  search_posts:
+    examples:
+      - search for rails
+      - search posts about rails
+      - search for posts about ruby
+      - find posts about mcp
+      - find posts about postgres
+      - find articles about testing
+      - find posts containing docker
+      - show me posts about rails
+      - show posts about ruby
+      - list posts about javascript
+      - any posts about mcp
+      - are there posts about ruby
+      - do i have any posts about databases
+      - look for posts mentioning turbo
+      - looking for articles about css
+      - posts matching hotwire
+      - which posts mention rails
+      - search the blog for security
+      - find anything about deployment
+      - search
+      - search posts
+      - find posts
+      - i want to search
+      - posts that mention rails
+      - which posts talk about ruby
+      - anything mentioning mcp
+      - search for docker
+      - find a post about testing
+      - is there a post about hotwire
+
+  show_post:
+    examples:
+      - show post 3
+      - show me post 2
+      - show post number 4
+      - 'show #5'
+      - open post 7
+      - 'open #2'
+      - read post 1
+      - 'read #3'
+      - view post 6
+      - view the post 2
+      - display post 3
+      - get post 4
+      - what does post 3 say
+      - what's in post 5
+      - show me the latest post
+      - show the newest post
+      - open the most recent post
+      - read the last post
+      - show the first post
+      - open the oldest post
+      - show the post titled "Hello world"
+      - open the post called Rails tips
+      - display the article named Getting started
+      - details of post 3
+      - tell me about post 2
+      - post 4
+      - '#4'
+      - number 3
+      - post number 2
+      - fetch post 2
+      - what is in post 2
+      - contents of post 3
+      - show me the details of post 5
+      - let me see post 2
+      - see post 3
+      - look at post 4
+      - i want to read post 2
+      - show me the full post 6
+      - display the latest post
+      - show me the newest article
+      - read the first article
+
+  create_post:
+    examples:
+      - create a post
+      - create a new post
+      - create post
+      - new post
+      - write a post
+      - write a new post
+      - write a blog post
+      - add a post
+      - add a new post
+      - add an article
+      - publish a post
+      - make a post
+      - make a new blog post
+      - i want to write a post
+      - i'd like to create a post
+      - start a new article
+      - draft a post
+      - create a post titled "Hello" with body "My first post"
+      - create a post titled Rails tips with body Use the console often
+      - write a post called Weekend plans
+      - new post named Learning MCP
+      - "add a post with title: Docker basics and body: Containers are useful"
+      - create an article titled Ruby 3.4 saying It is fast
+      - write a post about rails
+      - create a post about my trip
+
+  update_post:
+    examples:
+      - update post 3
+      - update the post 2
+      - edit post 3
+      - 'edit #4'
+      - change post 5
+      - modify post 2
+      - rename post 3 to Better title
+      - 'rename #4 to Something new'
+      - retitle post 2 to Fresh start
+      - change the title of post 3 to New title
+      - update the title of post 4 to Hello again
+      - 'set the title of #2 to Welcome'
+      - change the body of post 3 to Updated text
+      - update the content of post 2 to New content here
+      - set post 5 body to Hello world
+      - edit the text of post 1 to Shorter text
+      - edit the latest post
+      - update the last post
+      - change the newest post
+      - fix a typo in post 3
+      - i want to edit a post
+      - update a post
+      - edit a post
+      - modify an article
+      - change the latest post
+      - update the newest post
+      - modify the first post
+      - edit post number 2
+      - make changes to post 3
+      - correct post 4
+      - revise post 2
+      - alter post 3
+      - edit the newest article
+      - update post number 5
+
+  delete_post:
+    examples:
+      - delete post 3
+      - 'delete #4'
+      - delete the post 2
+      - remove post 5
+      - 'remove #1'
+      - destroy post 6
+      - erase post 2
+      - get rid of post 3
+      - trash post 4
+      - delete the latest post
+      - remove the last post
+      - delete the oldest post
+      - delete the first post
+      - delete the post titled "Old news"
+      - remove the article called Draft
+      - i want to delete a post
+      - delete a post
+      - remove a post
+      - delete an article
+      - please delete post 8
+      - can you remove post 9
+      - destroy the latest post
+      - erase the post 3
+      - trash the last post
+      - get rid of the oldest post
+      - throw away post 2
+      - delete post number 4
+      - wipe post 5
+      - drop post 3
+      - discard post 6
+      - remove the newest article
+
+  confirm:
+    examples:
+      - "yes"
+      - "y"
+      - yeah
+      - yep
+      - sure
+      - ok
+      - okay
+      - confirm
+      - do it
+      - go ahead
+      - yes please
+      - absolutely
+      - correct
+      - that's right
+      - yes do it
+      - yes delete it
+      - sounds good
+      - alright
+      - fine
+
+  deny:
+    examples:
+      - "no"
+      - "n"
+      - nope
+      - cancel
+      - stop
+      - never mind
+      - forget it
+      - don't
+      - no thanks
+      - abort
+      - not now
+      - no don't
+      - no keep it
+      - don't delete it
+      - leave it
+      - nah
+      - no stop

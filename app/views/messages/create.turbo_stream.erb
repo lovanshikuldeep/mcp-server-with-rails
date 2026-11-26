@@ -1,0 +1,2 @@
+<%= turbo_stream.append "messages", partial: "messages/message", collection: [ @user_message, @reply ] %>
+<%= turbo_stream.replace "message_form", partial: "messages/form" %>

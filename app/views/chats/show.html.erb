@@ -1,0 +1,22 @@
+<% content_for :title, "Blog assistant" %>
+
+<div class="header">
+  <h1>Blog assistant</h1>
+  <%= button_to "New conversation", chat_path, method: :delete, class: "btn-secondary" %>
+</div>
+
+<div class="chat" data-controller="chat">
+  <div id="messages" class="messages" data-chat-target="messages">
+    <div class="message message-assistant">
+      <div class="bubble"><%= format_chat_message(Chatbot::Bot::GREETING) %></div>
+    </div>
+    <%= render partial: "messages/message", collection: @messages %>
+  </div>
+
+  <%= render "messages/form" %>
+</div>
+
+<p class="hint">
+  Powered by an intent classifier trained on <code>config/chatbot/training_data.yml</code>.
+  No external AI service is used.
+</p>

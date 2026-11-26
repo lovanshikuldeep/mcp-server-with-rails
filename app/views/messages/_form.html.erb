@@ -1,0 +1,6 @@
+<%= form_with model: Message.new, url: chat_messages_path, id: "message_form", class: "chat-form" do |form| %>
+  <%= form.text_field :content, placeholder: "Try: list posts, show post 3, create a post…",
+        autocomplete: "off", required: true, maxlength: MessagesController::MAX_LENGTH,
+        aria: { label: "Message" }, data: { chat_target: "input" } %>
+  <%= form.submit "Send" %>
+<% end %>

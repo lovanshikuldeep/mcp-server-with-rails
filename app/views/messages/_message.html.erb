@@ -1,0 +1,13 @@
+<div id="<%= dom_id message %>" class="message message-<%= message.role %>">
+  <div class="bubble"><%= format_chat_message(message.content) %></div>
+  <% if message.role == "user" %>
+    <div class="meta">
+      <% if message.confidence %>
+        intent: <%= message.intent || "unknown" %>
+        (<%= number_to_percentage(message.confidence * 100, precision: 0) %><%= ", not confident enough" if message.confidence < Chatbot::Bot::CONFIDENCE_THRESHOLD %>)
+      <% elsif message.intent %>
+        answer to: <%= message.intent.humanize(capitalize: false) %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

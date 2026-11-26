@@ -46,7 +46,6 @@ module Chatbot
         intent, confidence = pending, nil
       else
         @state = {}
-        debugger
         prediction = @classifier.predict(text)
         intent, confidence = prediction.intent, prediction.confidence
         reply = understood?(prediction) ? dispatch(prediction.intent, entities) : FALLBACK

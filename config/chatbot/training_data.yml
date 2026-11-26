@@ -138,6 +138,33 @@ intents:
       - solve this math problem
       - what's 5 times 3
       - who made you
+      - tell me about cats
+      - tell me about the moon
+      - tell me about yourself
+      - what is love
+      - what is python
+      - what is the speed of light
+      - open the pod bay doors
+      - open the door
+      - open google
+      - open my email
+      - remove all my files
+      - delete everything on my computer
+      - show me a picture of a cat
+      - show me the news
+      - find me a restaurant
+      - find a good hotel nearby
+      - how do i get to the airport
+      - play a song
+      - who wrote hamlet
+      - what's two plus two
+      - turn off the lights
+      - call my mom
+      - write me a poem
+      - explain quantum physics
+      - give me a recipe
+      - what's the stock price of apple
+      - read me a story
 
   list_posts:
     examples:

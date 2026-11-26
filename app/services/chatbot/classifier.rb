@@ -6,6 +6,11 @@ module Chatbot
     TRAINING_DATA_PATH = Rails.root.join("config/chatbot/training_data.yml")
     MUTEX = Mutex.new
 
+    # Additive (Laplace/Lidstone) smoothing. 1.0 is the textbook default, but with
+    # a vocabulary this large it flattens the scores, so short messages such as "hi"
+    # got only ~30% confidence. A small value lets one known word be decisive.
+    SMOOTHING = 0.1
+
     Prediction = Data.define(:intent, :confidence, :scores)
 
     class << self
@@ -15,13 +20,13 @@ module Chatbot
         end
       end
 
-      def train(examples)
-        new.train(examples)
+      def train(examples, **options)
+        new(**options).train(examples)
       end
 
-      def load(path = MODEL_PATH)
+      def load(path = MODEL_PATH, **options)
         data = JSON.parse(File.read(path))
-        new(token_counts: data.fetch("token_counts"), example_counts: data.fetch("example_counts"))
+        new(token_counts: data.fetch("token_counts"), example_counts: data.fetch("example_counts"), **options)
       end
 
       # The trained model, retrained automatically when the training data is newer
@@ -49,9 +54,10 @@ module Chatbot
 
     attr_reader :example_counts
 
-    def initialize(token_counts: {}, example_counts: {})
+    def initialize(token_counts: {}, example_counts: {}, smoothing: SMOOTHING)
       @token_counts = token_counts
       @example_counts = example_counts
+      @smoothing = smoothing
       refresh_stats
     end
 
@@ -72,8 +78,8 @@ module Chatbot
       return Prediction.new(intent: nil, confidence: 0.0, scores: {}) unless meaningful?(tokens)
 
       log_scores = @token_counts.to_h do |intent, counts|
-        denominator = @totals[intent] + @vocabulary.size
-        [ intent, tokens.sum { |token| Math.log((counts.fetch(token, 0) + 1.0) / denominator) } ]
+        denominator = @totals[intent] + @smoothing * @vocabulary.size
+        [ intent, tokens.sum { |token| Math.log((counts.fetch(token, 0) + @smoothing) / denominator) } ]
       end
 
       max = log_scores.values.max
